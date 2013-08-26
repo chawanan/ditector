@@ -97,10 +97,16 @@ class CI_Controller {
 
 		$this->load =& load_class('Loader', 'core');
 		
-
 		$this->load->initialize();
 		
 		log_message('debug', "Controller Class Initialized");
+	}
+
+	public function loadView($content, $data = null) {
+		$header ['title'] = 'Tutor';
+		$this->load->view( 'template/header', $header);
+		$this->load->view( $content, $data);
+		$this->load->view( 'template/footer');
 	}
 
 	public static function &get_instance()
